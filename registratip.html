@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrati</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 500px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #121212;
+
+    }
+    h1 {
+      text-align: center;
+      color: #f5f5f5;
+    }
+    p {
+      text-align: center;
+      color: #b0b0b0;
+    }
+    hr {
+      border: 1px solid #333;
+    }
+    label {
+      color: #e0e0e0;
+    }
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #333;
+      border-radius: 4px;
+      background-color: #333;
+      color: #e0e0e0;
+    }
+    input[type="text"]::placeholder,
+    input[type="password"]::placeholder {
+      color: #999;
+    }
+    .registerbtn {
+      width: 100%;
+      padding: 14px 20px;
+      background-color: #37328c;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .registerbtn:hover {
+      background-color: #252257;
+    }
+    .container.signin {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .container.signin a {
+      color: #37328c;
+    }
+    #password-requirements {
+      color: red;
+      margin-top: 10px;
+    }
+    #password-requirements p {
+      display: flex;
+      align-items: center;
+    }
+    #password-requirements i {
+      margin-right: 8px;
+    }
+    #match-message {
+      color: red;
+      margin-top: 10px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <form action="action_page.php" onsubmit="return validateForm()">
+    <div class="container">
+      <h1><i class="fas fa-user-plus"></i> Registrati</h1>
+      <p>Compila questo modulo per creare un account.</p>
+      <hr>
+
+      <label for="fname"><i class="fas fa-user"></i> Nome</label>
+      <input type="text" placeholder="Inserisci il nome" name="fname" id="fname" required>
+
+      <label for="lname"><i class="fas fa-user"></i> Cognome</label>
+      <input type="text" placeholder="Inserisci il cognome" name="lname" id="lname" required>
+
+      <label for="email"><i class="fas fa-envelope"></i> Email</label>
+      <input type="text" placeholder="Inserisci l'email" name="email" id="email" required>
+
+      <label for="psw"><i class="fas fa-lock"></i> Password</label>
+      <input type="password" placeholder="Inserisci la password" name="psw" id="psw" required oninput="checkPassword()">
+
+      <label for="psw-repeat"><i class="fas fa-lock"></i> Ripeti Password</label>
+      <input type="password" placeholder="Ripeti la password" name="psw-repeat" id="psw-repeat" required oninput="checkPasswordMatch()">
+      
+      <div id="password-requirements">
+        <p id="length-requirement"><i class="fas fa-check-circle"></i> Almeno 12 caratteri</p>
+        <p id="uppercase-requirement"><i class="fas fa-check-circle"></i> Almeno una lettera maiuscola</p>
+        <p id="lowercase-requirement"><i class="fas fa-check-circle"></i> Almeno una lettera minuscola</p>
+        <p id="special-requirement"><i class="fas fa-check-circle"></i> Almeno un carattere speciale</p>
+      </div>
+      
+      <div id="match-message">Le password non corrispondono.</div>
+      
+      <hr>
+
+      <p>Creando un account accetti i nostri <a href="termini.html" style="color: #37328c;">Termini e Privacy</a>.</p>
+      <button type="submit" class="registerbtn">Registrati</button>
+    </div>
+  </form>
+
+  <script>
+    function checkPassword() {
+      var password = document.getElementById("psw").value;
+
+      var lengthRequirement = document.getElementById("length-requirement");
+      var uppercaseRequirement = document.getElementById("uppercase-requirement");
+      var lowercaseRequirement = document.getElementById("lowercase-requirement");
+      var specialRequirement = document.getElementById("special-requirement");
+
+      // Controlla la lunghezza della password
+      if (password.length >= 12) {
+        lengthRequirement.style.color = "green";
+      } else {
+        lengthRequirement.style.color = "red";
+      }
+
+      // Controlla se c'è almeno una lettera maiuscola
+      if (/[A-Z]/.test(password)) {
+        uppercaseRequirement.style.color = "#37328c";
+      } else {
+        uppercaseRequirement.style.color = "red";
+      }
+
+      // Controlla se c'è almeno una lettera minuscola
+      if (/[a-z]/.test(password)) {
+        lowercaseRequirement.style.color = "#37328c";
+      } else {
+        lowercaseRequirement.style.color = "red";
+      }
+
+      // Controlla se c'è almeno un carattere speciale
+      if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+        specialRequirement.style.color = "#37328c";
+      } else {
+        specialRequirement.style.color = "red";
+      }
+
+      checkPasswordMatch(); // Controlla la corrispondenza delle password durante l'immissione
+    }
+
+    function checkPasswordMatch() {
+      var password = document.getElementById("psw").value;
+      var confirmPassword = document.getElementById("psw-repeat").value;
+      var matchMessage = document.getElementById("match-message");
+
+      if (password !== confirmPassword) {
+        matchMessage.style.display = "block";
+      } else {
+        matchMessage.style.display = "none";
+      }
+    }
+
+    function validateForm() {
+      var password = document.getElementById("psw").value;
+      var confirmPassword = document.getElementById("psw-repeat").value;
+      var errorMessage = document.getElementById("match-message");
+
+      // Regex per validare la password
+      var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{12,}$/;
+
+      if (password !== confirmPassword) {
+        errorMessage.style.display = "block";
+        errorMessage.innerText = "Le password non corrispondono. Riprova.";
+        return false;
+      } else if (!passwordRegex.test(password)) {
+        errorMessage.style.display = "block";
+        errorMessage.innerText = "La password deve essere lunga almeno 12 caratteri, contenere almeno una lettera maiuscola, una minuscola, e un carattere speciale.";
+        return false;
+      } else {
+        errorMessage.style.display = "none";
+      }
+
+      return true;
+    }
+  </script>
+</body>
+</html>

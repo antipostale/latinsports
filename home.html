@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Latin Sports</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background-image: url('https://i.pinimg.com/originals/f5/e5/de/f5e5de4346defb36f6757456f1f15a4d.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #ffffff;
+      flex: 1;
+    }
+    .hero h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+    .hero button {
+      padding: 15px 30px;
+      background-color: #37328c;
+      border: none;
+      border-radius: 4px;
+      color: #ffffff;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    .hero button:hover {
+      background-color: #252257;
+    }
+    .content {
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+      flex: 1;
+    }
+    .content h3 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .content .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .content .grid .card {
+      background-color: #333;
+      border-radius: 10px;
+      overflow: hidden;
+      flex: 1;
+      min-width: 250px;
+      max-width: 300px;
+      text-align: center;
+    }
+    .content .grid .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+    .content .grid .card h4 {
+      font-size: 20px;
+      margin: 15px 0;
+    }
+    .content .grid .card p {
+      padding: 0 15px;
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    footer {
+      background-color: #121212;
+      color: #b0b0b0;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
+    }
+    footer p {
+      margin: 0;
+      font-size: 14px;
+    }
+    footer a {
+      color: #37328c;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    nav.bottom-nav {
+      background-color: #37328c;
+      color: #ffffff;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      padding: 15px 0;
+    }
+    nav.bottom-nav a {
+      color: #e0e0e0;
+      text-decoration: none;
+      font-size: 18px;
+      text-align: center;
+      flex: 1;
+    }
+    nav.bottom-nav a:hover {
+      color: #b0b0b0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <h2>Guarda le partite di calcio in diretta</h2>
+    <p>Iscriviti per accedere a tutte le partite dei migliori campionati e competizioni.</p>
+    <button onclick="window.location.href='registratip.html'">Inizia ora</button>
+  </div>
+
+  <div class="content">
+    <h3>Partite in evidenza</h3>
+    <div class="grid">
+      <div class="card">
+        <img src="milan.png" alt="Partita 1">
+        <h4>Milan vs Monza</h4>
+        <p>13 Agosto 2024</p>
+      </div>
+      <div class="card">
+        <img src="napoli.png" alt="Partita 2">
+        <h4>Verona vs Napoli</h4>
+        <p>18 Agosto 2024</p>
+      </div>
+      <div class="card">
+        <img src="inter.png" alt="Partita 3">
+        <h4>Genoa vs Inter</h4>
+        <p>17 Agosto 2024</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 CalcioLive. Tutti i diritti riservati.</p>
+    <p><a href="#">Termini e condizioni</a> | <a href="#">Privacy</a></p>
+  </footer>
+
+  <nav class="bottom-nav">
+    <a href="home.html"><i class="fas fa-home"></i><br>Home</a>
+    <a href="partite.html"><i class="fas fa-futbol"></i><br>Partite</a>
+    <a href="registratis.html"><i class="fas fa-download"></i><br>Scarica</a>
+    <a href="termini.html"><i class="fas fa-file-contract"></i><br>Termini</a>
+    <a href="registratip.html"><i class="fas fa-user"></i><br>Profilo</a>
+  </nav>
+
+</body>
+</html>
